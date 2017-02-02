@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version "0.1.10"
+    id 'io.franzbecker.gradle-lombok' version '1.8'
+}
+
+group 'ms.konovalov.idea'
+version '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+apply plugin: 'org.jetbrains.intellij'
+
+intellij {
+    version 'IC-2016.3' //IntelliJ IDEA 2016.3 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
+    pluginName 'ms.konovalov.intellij.hidpi-profiles'
+}
+
+lombok {
+    version = "1.16.8"
+    sha256 = "fe32b29b7b33eb2b19866cbc5345c59c9984a6036cc396856a04c0d09f99ea68"
+}
+
+dependencies {
+}

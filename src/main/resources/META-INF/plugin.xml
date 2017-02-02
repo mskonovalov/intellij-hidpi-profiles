@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>ms.konovalov.intellij.hidpi-profiles</id>
+    <name>hidpi-profiles</name>
+    <version>0.0.1</version>
+    <vendor email="mskonovalov@gmail.com">mskonovalov</vendor>
+
+    <description><![CDATA[
+      Plugin provides possibility to create several ui-profiles for different screen resolutions and easily toggle between them.<br>
+    ]]></description>
+
+    <change-notes><![CDATA[
+      Release 0.0.1: Initial release.<br>
+    ]]>
+    </change-notes>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="162" />
+
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable groupId="appearance" groupWeight="-100" displayName="HIDPI profiles" instance="ms.konovalov.intellij.hidpi.FontSizeComponent"
+                                 id="hidpiprofiles.settings" />
+    </extensions>
+
+    <application-components>
+        <component>
+            <implementation-class>ms.konovalov.intellij.hidpi.FontSizeComponent</implementation-class>
+            <interface-class>ms.konovalov.intellij.hidpi.FontSizeComponent</interface-class>
+        </component>
+    </application-components>
+
+
+    <actions>
+        <group id="hidpiprofiles.menu" class="ms.konovalov.intellij.hidpi.FontSizeActionGroup" text="HIDPI profiles" description="HIDPI profiles">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+        </group>
+    </actions>
+
+</idea-plugin>
