@@ -8,7 +8,7 @@ Simple plugin for Intellij IDEA that provides ability to create several ui-profi
 
 
 [travis]:https://travis-ci.org/mskonovalov/intellij-hidpi-profiles
-[travis img]:https://travis-ci.org/mskonovalov/intellij-hidpi-profiles.svg?branch=master
+[travis img]:https://travis-ci.org/mskonovalov/intellij-hidpi-profiles.svg?branch=2016.3
 [gitter]:https://gitter.im/intellij-hidpi-profiles/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [gitter img]:https://badges.gitter.im/intellij-hidpi-profiles/Lobby.svg
 [license]:LICENSE
