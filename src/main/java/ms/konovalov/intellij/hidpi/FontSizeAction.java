@@ -51,14 +51,12 @@ public class FontSizeAction extends ToggleAction {
 
     private void applyProfile(FontProfile profile) {
         UISettings uiSettings = UISettings.getInstance();
-        if (uiSettings != null) {
-            uiSettings.FONT_SIZE = profile.getGlobalFontSize();
-            uiSettings.OVERRIDE_NONIDEA_LAF_FONTS = profile.isOverrideGlobalFont();
-            EditorColorsManager.getInstance().getGlobalScheme().setEditorFontSize(profile.getEditorFontSize());
-            EditorColorsManager.getInstance().getGlobalScheme().setConsoleFontSize(profile.getConsoleFontSize());
+        uiSettings.setFontSize(profile.getGlobalFontSize());
+        uiSettings.setOverrideLafFonts(profile.isOverrideGlobalFont());
+        EditorColorsManager.getInstance().getGlobalScheme().setEditorFontSize(profile.getEditorFontSize());
+        EditorColorsManager.getInstance().getGlobalScheme().setConsoleFontSize(profile.getConsoleFontSize());
 
-            applySettings(uiSettings);
-        }
+        applySettings(uiSettings);
     }
 
     private void applySettings(UISettings uiSettings) {

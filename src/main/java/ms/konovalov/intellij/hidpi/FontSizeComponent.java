@@ -38,8 +38,8 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
         return new FontProfile(
                 active,
                 name,
-                instance != null ? instance.OVERRIDE_NONIDEA_LAF_FONTS : false,
-                instance != null ? instance.FONT_SIZE : 14,
+                instance.getOverrideLafFonts(),
+                instance.getFontSize(),
                 EditorColorsManager.getInstance().getGlobalScheme().getEditorFontSize(),
                 EditorColorsManager.getInstance().getGlobalScheme().getConsoleFontSize()
         );
