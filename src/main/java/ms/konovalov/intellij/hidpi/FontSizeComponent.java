@@ -19,6 +19,7 @@ import java.util.List;
 @State(name = "HIDPIProfiles", defaultStateAsResource = true, storages = @Storage(value = "hidpi.xml", roamingType = RoamingType.DISABLED))
 public class FontSizeComponent extends BaseConfigurableWithChangeSupport implements ApplicationComponent, PersistentStateComponent<FontSizeComponent.State> {
 
+    private FontSizeForm form;
     private State state = new State();
 
     public void initComponent() {
@@ -86,8 +87,6 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
 
     }
 
-    private FontSizeForm form;
-
     @Nls
     @Override
     public String getDisplayName() {
@@ -119,5 +118,6 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
 
     @Override
     public void disposeUIResources() {
+        //do nothing
     }
 }
