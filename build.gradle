@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'ms.konovalov.idea'
-version '2016.3.1-SNAPSHOT'
+version '2016.3.1'
 
 sourceCompatibility = 1.8
 
@@ -19,6 +19,11 @@ intellij {
     version 'IC-2016.3' //IntelliJ IDEA 2016.3 dependency; for a full list of IntelliJ IDEA releases please see https://www.jetbrains.com/intellij-repository/releases
     pluginName 'ms.konovalov.intellij.hidpi-profiles'
     updateSinceUntilBuild = false
+}
+
+publishPlugin {
+    username project.hasProperty('publishUsername') ? project.property('publishUsername') : ''
+    password project.hasProperty('publishPassword') ? project.property('publishPassword') : ''
 }
 
 lombok {
