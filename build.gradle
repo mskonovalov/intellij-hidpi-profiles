@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'ms.konovalov.idea'
-version '2017.1.1-SNAPSHOT'
+version '2017.1.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -20,6 +20,11 @@ intellij {
     version '171.3780.15'
     pluginName 'ms.konovalov.intellij.hidpi-profiles'
     updateSinceUntilBuild = false
+}
+
+publishPlugin {
+    username project.hasProperty('publishUsername') ? project.property('publishUsername') : ''
+    password project.hasProperty('publishPassword') ? project.property('publishPassword') : ''
 }
 
 lombok {
