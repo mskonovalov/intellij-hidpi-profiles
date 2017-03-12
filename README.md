@@ -1,6 +1,7 @@
 # intellij-hidpi-profiles
 
 [![Build Status][travis img]][travis]
+[![Codacy Badge][codacy img]][codacy]
 [![Join the chat at https://gitter.im/intellij-hidpi-profiles/Lobby][gitter img]][gitter]
 [![License][license img]][license]
 
@@ -9,6 +10,8 @@ Simple plugin for Intellij IDEA that provides ability to create several ui-profi
 
 [travis]:https://travis-ci.org/mskonovalov/intellij-hidpi-profiles
 [travis img]:https://travis-ci.org/mskonovalov/intellij-hidpi-profiles.svg?branch=2016.3
+[codacy]:https://www.codacy.com/app/mskonovalov/intellij-hidpi-profiles?utm_source=github.com&utm_medium=referral&utm_content=mskonovalov/intellij-hidpi-profiles&utm_campaign=badger
+[codacy img]:https://api.codacy.com/project/badge/Grade/2e383d972ce14195897fda7215dad868
 [gitter]:https://gitter.im/intellij-hidpi-profiles/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [gitter img]:https://badges.gitter.im/intellij-hidpi-profiles/Lobby.svg
 [license]:LICENSE
