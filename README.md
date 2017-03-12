@@ -1,5 +1,7 @@
 # intellij-hidpi-profiles
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2e383d972ce14195897fda7215dad868)](https://www.codacy.com/app/mskonovalov/intellij-hidpi-profiles?utm_source=github.com&utm_medium=referral&utm_content=mskonovalov/intellij-hidpi-profiles&utm_campaign=badger)
+
 [![Build Status][travis img]][travis]
 [![Join the chat at https://gitter.im/intellij-hidpi-profiles/Lobby][gitter img]][gitter]
 [![License][license img]][license]
