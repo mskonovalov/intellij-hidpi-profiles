@@ -1,11 +1,13 @@
 # intellij-hidpi-profiles
 
 [![Build Status][travis img]][travis]
+[![Download on https://plugins.jetbrains.com/plugin][downloads img]][downloads]
 [![Codacy Badge][codacy img]][codacy]
 [![Join the chat at https://gitter.im/intellij-hidpi-profiles/Lobby][gitter img]][gitter]
 [![License][license img]][license]
 
 Simple plugin for Intellij IDEA that provides ability to create several ui-profiles for different screen resolutions and easily toggle between them
+
 
 
 [travis]:https://travis-ci.org/mskonovalov/intellij-hidpi-profiles
@@ -16,3 +18,5 @@ Simple plugin for Intellij IDEA that provides ability to create several ui-profi
 [gitter img]:https://badges.gitter.im/intellij-hidpi-profiles/Lobby.svg
 [license]:LICENSE
 [license img]:https://img.shields.io/badge/License-MIT-blue.svg
+[downloads]:https://plugins.jetbrains.com/plugin/9541
+[downloads img]:https://img.shields.io/badge/downloads-24-yellowgreen.svg
