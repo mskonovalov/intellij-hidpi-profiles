@@ -5,15 +5,41 @@
     <vendor email="mskonovalov@gmail.com">mskonovalov</vendor>
 
     <description><![CDATA[
-      Plugin provides possibility to create several ui-profiles for different screen resolutions and easily toggle between them.<br>
+        Plugin provides possibility to create several UI profiles for different screen resolutions and easily toggle between them.<br/>
+        This plugin will be useful for Linux users with several displays of different resolutions.<br/>
+        <br/>
+        To start using this plugin:<br/>
+        1) Set up all the fonts sizes in your IDE. Plugin supports:<br/>
+        <ul>
+            <li>Default system font size;</li>
+            <li>Editor font size;</li>
+            <li>Console font size.</li>
+        </ul>
+        Then go to <b>Settings > Appearance & Behavior > HDPI profiles > Add current profile</b> and save your profile.<br/>
+        <img src="https://github.com/mskonovalov/intellij-hidpi-profiles/raw/2016.3/_preview/create_profile.gif"/><br/>
+        <br/>
+        2) Toggle between profiles in main menu "HIDPI profiles"<br/>
+        <img src="https://github.com/mskonovalov/intellij-hidpi-profiles/raw/2016.3/_preview/switch_profile.gif"/><br/>
     ]]></description>
 
-    <change-notes><![CDATA[
-      Release 0.0.1: Initial release.<br>
-    ]]>
+    <change-notes><![CDATA[<html>
+       <b>Version 2017.1.1:</b>
+       <ul>
+         <li>Support for Intellij IDEA 2017.1 and above</li>
+       </ul>
+       <b>Version 2016.3.1:</b>
+       <ul>
+         <li>Support for Intellij IDEA 2016.2 and 2016.3</li>
+       </ul>
+       <b>Version 0.0.1:</b>
+       <ul>
+         <li>Initial release</li>
+       </ul>
+    </html>]]>
     </change-notes>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <!-- please see http://www.jetbrains.org/
+    intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
     <idea-version since-build="162" until-build="163.*" />
 
     <depends>com.intellij.modules.lang</depends>
