@@ -39,4 +39,4 @@ Toggle between profiles in main menu "HIDPI profiles"
 [license]:LICENSE
 [license img]:https://img.shields.io/badge/License-MIT-blue.svg
 [downloads]:https://plugins.jetbrains.com/plugin/9541
-[downloads img]:https://img.shields.io/badge/downloads-28-yellowgreen.svg
+[downloads img]:https://img.shields.io/jetbrains/plugin/d/9541-hidpi-profiles.svg
