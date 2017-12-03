@@ -10,6 +10,7 @@ import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,23 +40,32 @@ public class FontSizeAction extends ToggleAction {
         if (profile.isActive()) {
             return;
         }
-        unselectAll();
+        deselectAll();
         applyProfile(profile);
         profile.setActive(true);
         notify(e.getProject(), "HIDPI Profiles", "HIDPI Profiles", "Profile '" + profile.getName() + "' is applied.", NotificationType.INFORMATION);
     }
 
-    private void unselectAll() {
+    private void deselectAll() {
         FontSizeComponent.getProfiles().forEach(p -> p.setActive(false));
     }
 
     private void applyProfile(FontProfile profile) {
         UISettings uiSettings = UISettings.getInstance();
         uiSettings.setFontSize(profile.getGlobalFontSize());
+        if (profile.getGlobalFontFamily() != null) {
+            uiSettings.setFontFace(profile.getGlobalFontFamily());
+        }
         uiSettings.setOverrideLafFonts(profile.isOverrideGlobalFont());
-        EditorColorsManager.getInstance().getGlobalScheme().setEditorFontSize(profile.getEditorFontSize());
-        EditorColorsManager.getInstance().getGlobalScheme().setConsoleFontSize(profile.getConsoleFontSize());
-
+        EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
+        globalScheme.setEditorFontSize(profile.getEditorFontSize());
+        if (profile.getEditorFontFamily() != null) {
+            globalScheme.setEditorFontName(profile.getEditorFontFamily());
+        }
+        globalScheme.setConsoleFontSize(profile.getConsoleFontSize());
+        if (profile.getConsoleFontFamily() != null) {
+            globalScheme.setConsoleFontName(profile.getConsoleFontFamily());
+        }
         applySettings(uiSettings);
     }
 

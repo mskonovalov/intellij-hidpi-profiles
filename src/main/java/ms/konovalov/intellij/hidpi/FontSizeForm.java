@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.*;
 
+@SuppressWarnings("unused")
 public class FontSizeForm {
 
     private FontSizeComponent component;

@@ -4,10 +4,13 @@ import com.intellij.ide.ui.UISettings;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.*;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.options.BaseConfigurableWithChangeSupport;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -36,13 +39,17 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
     @SuppressWarnings("SimplifiableConditionalExpression")
     static FontProfile getCurrentProfile(String name, boolean active) {
         UISettings instance = UISettings.getInstance();
+        EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
         return new FontProfile(
                 active,
                 name,
                 instance.getOverrideLafFonts(),
                 instance.getFontSize(),
-                EditorColorsManager.getInstance().getGlobalScheme().getEditorFontSize(),
-                EditorColorsManager.getInstance().getGlobalScheme().getConsoleFontSize()
+                instance.getFontFace(),
+                globalScheme.getEditorFontSize(),
+                globalScheme.getEditorFontName(),
+                globalScheme.getConsoleFontSize(),
+                globalScheme.getConsoleFontName()
         );
     }
 
@@ -74,7 +81,8 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
         return ApplicationManager.getApplication().getComponent(FontSizeComponent.class).profiles();
     }
 
-    @Data
+    @Getter
+    @Setter
     static class State {
 
         private List<FontProfile> profiles = new ArrayList<>();

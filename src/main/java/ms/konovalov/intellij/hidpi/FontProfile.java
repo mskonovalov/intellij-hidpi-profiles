@@ -13,6 +13,9 @@ public class FontProfile {
     private String name;
     private boolean overrideGlobalFont;
     private int globalFontSize;
+    private String globalFontFamily;
     private int editorFontSize;
+    private String editorFontFamily;
     private int consoleFontSize;
+    private String consoleFontFamily;
 }
