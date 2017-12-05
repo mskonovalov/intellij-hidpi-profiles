@@ -1,7 +1,8 @@
 # intellij-hidpi-profiles
 
+[![Download on https://plugins.jetbrains.com/plugin][version img]][jetbrains]
+[![Download on https://plugins.jetbrains.com/plugin][downloads img]][jetbrains]
 [![Build Status][travis img]][travis]
-[![Download on https://plugins.jetbrains.com/plugin][downloads img]][downloads]
 [![Codacy Badge][codacy img]][codacy]
 [![Join the chat at https://gitter.im/intellij-hidpi-profiles/Lobby][gitter img]][gitter]
 [![License][license img]][license]
@@ -38,5 +39,13 @@ Toggle between profiles in main menu "HIDPI profiles"
 [gitter img]:https://badges.gitter.im/intellij-hidpi-profiles/Lobby.svg
 [license]:LICENSE
 [license img]:https://img.shields.io/badge/License-MIT-blue.svg
-[downloads]:https://plugins.jetbrains.com/plugin/9541
+[jetbrains]:https://plugins.jetbrains.com/plugin/9541
 [downloads img]:https://img.shields.io/jetbrains/plugin/d/9541-hidpi-profiles.svg
+[version img]:https://img.shields.io/jetbrains/plugin/v/9541.svg
+
+## Known issues
+1. Terminal font
+Terminal font is supported in Profiles. But it is not adjusted automatically when you switch between profiles.
+According to [this thread](https://intellij-support.jetbrains.com/hc/en-us/community/posts/207004525-terminal-theme) in order to adjust font for Terminal window
+you should close the Terminal window and then open again (it will be opened with font settings from active profile)
+2. Font for GitToolbox is not adjustable
