@@ -6,7 +6,6 @@ import com.intellij.openapi.components.*;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.options.BaseConfigurableWithChangeSupport;
-import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import lombok.Data;
 import lombok.Getter;
@@ -30,6 +29,8 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
             FontProfile initialProfile = getCurrentProfile("Default", true);
             state.getProfiles().add(initialProfile);
         }
+        state.getProfiles().stream().filter(FontProfile::isActive).findFirst()
+                .ifPresent(FontProfileManager::applyProfile);
     }
 
     private List<FontProfile> profiles() {
@@ -92,7 +93,6 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
                 profiles.clear();
             profiles = null;
         }
-
     }
 
     @Nls
@@ -115,7 +115,7 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
     }
 
     @Override
-    public void apply() throws ConfigurationException {
+    public void apply() {
         form.apply();
     }
 
