@@ -51,7 +51,7 @@ public class FontSizeForm {
             if (profileName == null) {
                 return;
             }
-            FontProfile activeProfile = FontProfileManager.readCurrentProfile(profileName, false);
+            FontProfile activeProfile = FontProfileManager.INSTANCE.readCurrentProfile(profileName, false);
             ((DefaultListModel<FontProfile>) profilesList.getModel()).addElement(activeProfile);
             profilesList.setSelectedIndex(profilesList.getModel().getSize() - 1);
             setModified(true);

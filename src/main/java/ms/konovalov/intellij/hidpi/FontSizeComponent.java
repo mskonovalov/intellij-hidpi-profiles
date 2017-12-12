@@ -26,22 +26,22 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
 
     public void initComponent() {
         if (state.getProfiles().isEmpty()) {
-            FontProfile initialProfile = FontProfileManager.readCurrentProfile("Default", true);
+            FontProfile initialProfile = FontProfileManager.INSTANCE.readCurrentProfile("Default", true);
             state.getProfiles().add(initialProfile);
         }
-        state.getActiveProfile().ifPresent(FontProfileManager::applyProfile);
+        state.getActiveProfile().ifPresent(FontProfileManager.INSTANCE::applyProfile);
 
         MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();
         messageBus.connect().subscribe(UISettingsListener.TOPIC, settingsChange ->
                 state.getActiveProfile().ifPresent(active -> {
-                    if (FontProfileManager.changed(active, settingsChange)) {
-                        FontProfileManager.deselectAll();
+                    if (FontProfileManager.INSTANCE.changed(active, settingsChange)) {
+                        FontProfileManager.INSTANCE.deselectAll();
                     }
                 }));
         messageBus.connect().subscribe(EditorColorsManager.TOPIC, settingsChange ->
                 state.getActiveProfile().ifPresent(active -> {
-                    if (FontProfileManager.changed(active, EditorColorsManager.getInstance().getGlobalScheme())) {
-                        FontProfileManager.deselectAll();
+                    if (FontProfileManager.INSTANCE.changed(active, EditorColorsManager.getInstance().getGlobalScheme())) {
+                        FontProfileManager.INSTANCE.deselectAll();
                     }
                 }));
     }
