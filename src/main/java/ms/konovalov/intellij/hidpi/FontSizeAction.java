@@ -1,21 +1,17 @@
 package ms.konovalov.intellij.hidpi;
 
-import com.intellij.ide.ui.LafManager;
-import com.intellij.ide.ui.UISettings;
 import com.intellij.notification.*;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.actionSystem.ToggleAction;
-import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
 
 public class FontSizeAction extends ToggleAction {
 
+    private static final String GROUP_ID = "ms.konovalov.intellij.hidpi";
     private final FontProfile profile;
 
     FontSizeAction(FontProfile profile) {
@@ -40,44 +36,17 @@ public class FontSizeAction extends ToggleAction {
         if (profile.isActive()) {
             return;
         }
-        deselectAll();
-        applyProfile(profile);
+        FontProfileManager.deselectAll();
+        FontProfileManager.applyProfile(profile);
         profile.setActive(true);
-        notify(e.getProject(), "HIDPI Profiles", "HIDPI Profiles", "Profile '" + profile.getName() + "' is applied.", NotificationType.INFORMATION);
-    }
-
-    private void deselectAll() {
-        FontSizeComponent.getProfiles().forEach(p -> p.setActive(false));
-    }
-
-    private void applyProfile(FontProfile profile) {
-        UISettings uiSettings = UISettings.getInstance();
-        uiSettings.setFontSize(profile.getGlobalFontSize());
-        if (profile.getGlobalFontFamily() != null) {
-            uiSettings.setFontFace(profile.getGlobalFontFamily());
-        }
-        uiSettings.setOverrideLafFonts(profile.isOverrideGlobalFont());
-        EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
-        globalScheme.setEditorFontSize(profile.getEditorFontSize());
-        if (profile.getEditorFontFamily() != null) {
-            globalScheme.setEditorFontName(profile.getEditorFontFamily());
-        }
-        globalScheme.setConsoleFontSize(profile.getConsoleFontSize());
-        if (profile.getConsoleFontFamily() != null) {
-            globalScheme.setConsoleFontName(profile.getConsoleFontFamily());
-        }
-        applySettings(uiSettings);
-    }
-
-    private void applySettings(UISettings uiSettings) {
-        uiSettings.fireUISettingsChanged();
-        EditorFactory.getInstance().refreshAllEditors();
-        LafManager.getInstance().updateUI();
-        ActionToolbarImpl.updateAllToolbarsImmediately();
+        ApplicationManager.getApplication().getMessageBus().syncPublisher(EditorColorsManager.TOPIC).globalSchemeChange(
+                EditorColorsManager.getInstance().getSchemeForCurrentUITheme()
+        );
+        showSplashNotification(e.getProject(), GROUP_ID, "HIDPI Profiles", "Profile '" + profile.getName() + "' is applied.", NotificationType.INFORMATION);
     }
 
     @SuppressWarnings("SameParameterValue")
-    private static void notify(final Project project, final String groupId, final String title, final String message, final NotificationType notificationType) {
+    private static void showSplashNotification(final Project project, final String groupId, final String title, final String message, final NotificationType notificationType) {
         ApplicationManager.getApplication().runWriteAction(() -> {
             NotificationsConfiguration.getNotificationsConfiguration().register(groupId, NotificationDisplayType.BALLOON, false);
             final Notification notification = new Notification(groupId, title, message,

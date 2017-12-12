@@ -1,13 +1,12 @@
 package ms.konovalov.intellij.hidpi;
 
-import com.intellij.ide.ui.UISettings;
+import com.intellij.ide.ui.UISettingsListener;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.*;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
-import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.options.BaseConfigurableWithChangeSupport;
+import com.intellij.util.messages.MessageBus;
 import com.intellij.util.xmlb.XmlSerializerUtil;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.Nls;
@@ -17,6 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @State(name = "HIDPIProfiles", defaultStateAsResource = true, storages = @Storage(value = "hidpi.xml", roamingType = RoamingType.DISABLED))
 public class FontSizeComponent extends BaseConfigurableWithChangeSupport implements ApplicationComponent, PersistentStateComponent<FontSizeComponent.State> {
@@ -26,32 +26,28 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
 
     public void initComponent() {
         if (state.getProfiles().isEmpty()) {
-            FontProfile initialProfile = getCurrentProfile("Default", true);
+            FontProfile initialProfile = FontProfileManager.readCurrentProfile("Default", true);
             state.getProfiles().add(initialProfile);
         }
-        state.getProfiles().stream().filter(FontProfile::isActive).findFirst()
-                .ifPresent(FontProfileManager::applyProfile);
+        state.getActiveProfile().ifPresent(FontProfileManager::applyProfile);
+
+        MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();
+        messageBus.connect().subscribe(UISettingsListener.TOPIC, settingsChange ->
+                state.getActiveProfile().ifPresent(active -> {
+                    if (FontProfileManager.changed(active, settingsChange)) {
+                        FontProfileManager.deselectAll();
+                    }
+                }));
+        messageBus.connect().subscribe(EditorColorsManager.TOPIC, settingsChange ->
+                state.getActiveProfile().ifPresent(active -> {
+                    if (FontProfileManager.changed(active, EditorColorsManager.getInstance().getGlobalScheme())) {
+                        FontProfileManager.deselectAll();
+                    }
+                }));
     }
 
     private List<FontProfile> profiles() {
         return state.getProfiles();
-    }
-
-    @SuppressWarnings("SimplifiableConditionalExpression")
-    static FontProfile getCurrentProfile(String name, boolean active) {
-        UISettings instance = UISettings.getInstance();
-        EditorColorsScheme globalScheme = EditorColorsManager.getInstance().getGlobalScheme();
-        return new FontProfile(
-                active,
-                name,
-                instance.getOverrideLafFonts(),
-                instance.getFontSize(),
-                instance.getFontFace(),
-                globalScheme.getEditorFontSize(),
-                globalScheme.getEditorFontName(),
-                globalScheme.getConsoleFontSize(),
-                globalScheme.getConsoleFontName()
-        );
     }
 
     @Override
@@ -89,9 +85,13 @@ public class FontSizeComponent extends BaseConfigurableWithChangeSupport impleme
         private List<FontProfile> profiles = new ArrayList<>();
 
         void clear() {
-            if (profiles != null)
+            if (profiles != null) {
                 profiles.clear();
-            profiles = null;
+            }
+        }
+
+        Optional<FontProfile> getActiveProfile() {
+            return profiles.stream().filter(FontProfile::isActive).findFirst();
         }
     }
 

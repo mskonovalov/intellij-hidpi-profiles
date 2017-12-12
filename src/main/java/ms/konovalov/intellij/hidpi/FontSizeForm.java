@@ -47,13 +47,11 @@ public class FontSizeForm {
         });
 
         addCurrentButton.addActionListener(e -> {
-            FontProfile activeProfile = FontSizeComponent.getCurrentProfile("Name", false);
             String profileName = Messages.showInputDialog("Provide name for new Profile", "HDPI Profile ", null);
             if (profileName == null) {
                 return;
-            } else {
-                activeProfile.setName(profileName);
             }
+            FontProfile activeProfile = FontProfileManager.readCurrentProfile(profileName, false);
             ((DefaultListModel<FontProfile>) profilesList.getModel()).addElement(activeProfile);
             profilesList.setSelectedIndex(profilesList.getModel().getSize() - 1);
             setModified(true);
