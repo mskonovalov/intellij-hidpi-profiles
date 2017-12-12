@@ -17,7 +17,7 @@ public class FontSizeForm {
     private java.util.List<FontProfile> profiles;
 
     FontSizeForm(FontSizeComponent component) {
-        profiles = FontSizeComponent.getProfiles();
+        profiles = FontProfileManager.INSTANCE.getProfiles();
         this.component = component;
         profilesList.setModel(setModel());
         profilesList.setSelectedIndex(0);

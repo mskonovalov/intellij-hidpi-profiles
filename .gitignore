@@ -2,3 +2,4 @@
 build
 hs_err_pid*
 .gradle/
+*.iml

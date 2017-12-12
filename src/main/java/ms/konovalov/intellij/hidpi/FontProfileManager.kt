@@ -3,6 +3,7 @@ package ms.konovalov.intellij.hidpi
 import com.intellij.ide.ui.LafManager
 import com.intellij.ide.ui.UISettings
 import com.intellij.openapi.actionSystem.impl.ActionToolbarImpl
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.editor.EditorFactory
 import com.intellij.openapi.editor.colors.EditorColorsManager
 import com.intellij.openapi.editor.colors.EditorColorsScheme
@@ -53,7 +54,7 @@ object FontProfileManager {
     }
 
     fun deselectAll() {
-        FontSizeComponent.getProfiles().forEach { p -> p.isActive = false }
+        profiles.forEach { p -> p.isActive = false }
     }
 
     fun changed(active: FontProfile, settings: UISettings): Boolean {
@@ -68,4 +69,7 @@ object FontProfileManager {
                 && settings.consoleFontSize == active.consoleFontSize
                 && settings.consoleFontName == active.editorFontFamily)
     }
+
+    val profiles: List<FontProfile> =
+            ApplicationManager.getApplication().getComponent(FontSizeComponent::class.java).state.profiles
 }

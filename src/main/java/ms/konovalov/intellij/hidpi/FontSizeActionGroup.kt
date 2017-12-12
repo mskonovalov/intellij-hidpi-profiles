@@ -7,6 +7,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 class FontSizeActionGroup : ActionGroup() {
 
     override fun getChildren(e: AnActionEvent?): Array<AnAction> {
-        return FontSizeComponent.getProfiles().map({ FontSizeAction(it) }).toTypedArray()
+        return FontProfileManager.profiles.map({ FontSizeAction(it) }).toTypedArray()
     }
 }
