@@ -1,12 +1,11 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version "0.2.12"
-    id 'io.franzbecker.gradle-lombok' version '1.8'
+    id 'org.jetbrains.intellij' version "0.2.17"
     id "org.jetbrains.kotlin.jvm" version "1.2.0"
 }
 
 group 'ms.konovalov.idea'
-version '2017.1.2-SNAPSHOT'
+version '2017.1.2'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -18,7 +17,7 @@ repositories {
 apply plugin: 'org.jetbrains.intellij'
 
 intellij {
-    version '2017.1'
+    version '2017.3'
     pluginName 'ms.konovalov.intellij.hidpi-profiles'
     updateSinceUntilBuild = false
 }
@@ -26,11 +25,6 @@ intellij {
 publishPlugin {
     username project.hasProperty('publishUsername') ? project.property('publishUsername') : ''
     password project.hasProperty('publishPassword') ? project.property('publishPassword') : ''
-}
-
-lombok {
-    version = "1.16.8"
-    sha256 = "fe32b29b7b33eb2b19866cbc5345c59c9984a6036cc396856a04c0d09f99ea68"
 }
 
 dependencies {

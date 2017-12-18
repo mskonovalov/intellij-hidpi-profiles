@@ -18,9 +18,9 @@ To start using this plugin:
 ### 1. Create profiles
 
 Set up all the fonts sizes in your IDE. Plugin supports:  
-    1. Default system font size;  
-    2. Editor font size;  
-    3. Console font size.  
+    1. Default system font size and type;  
+    2. Editor font size and type;  
+    3. Console font size and type.  
         
 Then go to **Settings > Appearance & Behavior > HDPI profiles > Add current profile** and save your profile.
 
