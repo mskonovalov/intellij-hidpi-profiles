@@ -70,6 +70,5 @@ object FontProfileManager {
                 && settings.consoleFontName == active.editorFontFamily)
     }
 
-    val profiles: List<FontProfile> =
-            ApplicationManager.getApplication().getComponent(FontSizeComponent::class.java).state.profiles
+    val profiles = ApplicationManager.getApplication().getComponent(FontSizeComponent::class.java).state.profiles
 }
