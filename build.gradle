@@ -18,7 +18,7 @@ repositories {
 apply plugin: 'org.jetbrains.intellij'
 
 intellij {
-    version '2017.3'
+    version '2017.1'
     pluginName 'ms.konovalov.intellij.hidpi-profiles'
     updateSinceUntilBuild = false
 }
