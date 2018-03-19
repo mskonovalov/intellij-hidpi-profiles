@@ -54,6 +54,7 @@
     <idea-version since-build="171" />
 
     <depends>com.intellij.modules.lang</depends>
+    <!--<depends optional="true">com.chrisrm.idea.MaterialThemeUI</depends>-->
 
     <extensions defaultExtensionNs="com.intellij">
         <applicationConfigurable groupId="appearance" groupWeight="-100" displayName="HIDPI profiles" instance="ms.konovalov.intellij.hidpi.FontSizeComponent"
@@ -66,7 +67,6 @@
             <interface-class>ms.konovalov.intellij.hidpi.FontSizeComponent</interface-class>
         </component>
     </application-components>
-
 
     <actions>
         <group id="hidpiprofiles.menu" class="ms.konovalov.intellij.hidpi.FontSizeActionGroup" text="HIDPI profiles" description="HIDPI profiles">

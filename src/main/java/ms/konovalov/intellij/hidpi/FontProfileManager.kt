@@ -18,7 +18,7 @@ object FontProfileManager {
         }
         uiSettings.overrideLafFonts = profile.isOverrideGlobalFont
 
-        val globalScheme = EditorColorsManager.getInstance().schemeForCurrentUITheme
+        val globalScheme = EditorColorsManager.getInstance().globalScheme
         globalScheme.editorFontSize = profile.editorFontSize
         if (profile.editorFontFamily != null) {
             globalScheme.editorFontName = profile.editorFontFamily
