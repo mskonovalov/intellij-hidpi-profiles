@@ -28,7 +28,11 @@
     ]]></description>
 
     <change-notes><![CDATA[<html>
-        <b>Version 2017.1.2:</b>
+       <b>Version 2017.1.3:</b>
+       <ul>
+         <li>Bug fixes</li>
+       </ul>
+       <b>Version 2017.1.2:</b>
        <ul>
          <li>Now it is possible to save font family</li>
          <li>Fixed issue with Material Theme UI plugin</li>
