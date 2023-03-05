@@ -34,8 +34,8 @@ Toggle between profiles in main menu "HIDPI profiles"
 
 [travis]:https://travis-ci.org/mskonovalov/intellij-hidpi-profiles
 [travis img]:https://travis-ci.org/mskonovalov/intellij-hidpi-profiles.svg?branch=2017.1
-[codacy]:https://www.codacy.com/app/mskonovalov/intellij-hidpi-profiles?utm_source=github.com&utm_medium=referral&utm_content=mskonovalov/intellij-hidpi-profiles&utm_campaign=badger
-[codacy img]:https://api.codacy.com/project/badge/Grade/2e383d972ce14195897fda7215dad868
+[codacy]:https://www.codacy.com/gh/mskonovalov/intellij-hidpi-profiles/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mskonovalov/intellij-hidpi-profiles&amp;utm_campaign=Badge_Grade
+[codacy img]:https://app.codacy.com/project/badge/Grade/2d84ab14425f48c2a64b77e45a4b00e3
 [gitter]:https://gitter.im/intellij-hidpi-profiles/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [gitter img]:https://badges.gitter.im/intellij-hidpi-profiles/Lobby.svg
 [license]:LICENSE
